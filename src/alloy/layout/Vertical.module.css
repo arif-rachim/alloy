@@ -1,0 +1,29 @@
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.alignTop {
+    justify-content: flex-start;
+}
+
+.alignBottom {
+    justify-content: flex-end;
+}
+
+.alignVerticalCenter {
+    justify-content: center;
+}
+
+.alignLeft {
+    align-items: flex-start;
+}
+
+.alignRight {
+    align-items: flex-end;
+}
+
+.alignHorizontalCenter {
+    align-items: center;
+}
