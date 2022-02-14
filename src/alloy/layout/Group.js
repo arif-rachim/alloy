@@ -1,6 +1,6 @@
 import hClass from "./Horizontal.module.css";
 import vClass from "./Vertical.module.css";
-import {useMemo} from "react";
+import {forwardRef, useMemo} from "react";
 
 function lookVerticalAlign(isHorizontal, position) {
     return ({
@@ -29,13 +29,21 @@ function lookHorizontalAlign(isHorizontal, position) {
  * @returns {JSX.Element}
  * @constructor
  */
-export default function Group({isHorizontal, verticalAlign, horizontalAlign, className, style, ...props}) {
+export default forwardRef(function Group({
+                                             isHorizontal,
+                                             verticalAlign,
+                                             horizontalAlign,
+                                             className,
+                                             style,
+                                             onClick,
+                                             ...props
+                                         }, ref) {
     const summaryClassName = useMemo(() => {
         const clazz = [isHorizontal ? hClass.container : vClass.container];
         verticalAlign && clazz.push(lookVerticalAlign(isHorizontal, verticalAlign));
-        horizontalAlign && clazz.push(lookHorizontalAlign(isHorizontal, verticalAlign));
+        horizontalAlign && clazz.push(lookHorizontalAlign(isHorizontal, horizontalAlign));
         className && clazz.push(className);
         return clazz.join(' ');
     }, [verticalAlign, horizontalAlign, isHorizontal, className])
-    return <div className={summaryClassName} style={style}>{props.children}</div>
-}
+    return <div ref={ref} className={summaryClassName} style={style} onClick={onClick}>{props.children}</div>
+})

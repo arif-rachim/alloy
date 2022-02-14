@@ -4,6 +4,6 @@ import Application from "./Application";
 
 ReactDOM.render(
     <React.StrictMode>
-        <Application />
+        <Application/>
     </React.StrictMode>
-    ,document.getElementById('root'));
+    , document.getElementById('root'));

@@ -1,0 +1,17 @@
+.button {
+    background: none;
+    font-family: SFProText;
+    font-weight: 300;
+    border: 1px solid #CCCCCC;
+    border-radius: 0.5rem;
+    box-sizing: border-box;
+    padding: 0.3rem 0.5rem;
+    font-size: 1rem;
+    color: black;
+    margin: 0.5rem;
+    flex-grow: 1;
+}
+
+.button:active {
+    background-color: #DDD;
+}

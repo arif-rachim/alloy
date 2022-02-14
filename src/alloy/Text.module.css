@@ -1,9 +1,10 @@
 @import url('font/SfProText/sfprotext.css');
 @import url('font/SfProDisplay/sfprodisplay.css');
 
-.text{
+.text {
     font-family: SFProText, serif;
 }
-.display{
+
+.display {
     font-family: SFProDisplay, serif;
 }

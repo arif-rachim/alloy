@@ -11,16 +11,16 @@ import Text from "./Text";
  * @returns {JSX.Element}
  * @constructor
  */
-export default function Label({label,valueOf, ...props}) {
+export default function Label({label, valueOf, ...props}) {
     const labelGroupValue = useContext(LabelGroupContext);
     const isHorizontal = labelGroupValue?.isHorizontal;
     const widthRem = labelGroupValue?.widthRem;
-    return <label className={classes.marginBottom} >
+    return label ? <label className={classes.marginBottom}>
         <Group isHorizontal={isHorizontal} verticalAlign={"center"}>
             <Text style={{width: widthRem ? widthRem + 'rem' : undefined, flexShrink: 0}}>{label}</Text>
             <Group className={classes.flexGrow}>{props.children}</Group>
         </Group>
-    </label>
+    </label> : props.children;
 }
 const LabelGroupContext = createContext({isHorizontal: false, labelWidth: undefined});
 
@@ -32,7 +32,7 @@ const LabelGroupContext = createContext({isHorizontal: false, labelWidth: undefi
  * @returns {JSX.Element}
  * @constructor
  */
-export function LabelGroup({isHorizontal=true, widthRem, ...props}) {
+export function LabelGroup({isHorizontal = true, widthRem, ...props}) {
     const contextValue = useMemo(() => ({isHorizontal, widthRem}), [isHorizontal, widthRem]);
     return <LabelGroupContext.Provider value={contextValue}>
         {props.children}
